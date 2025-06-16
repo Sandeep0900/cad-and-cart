@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // ✅ Add at the top
+
+
 import {
   getAllProducts,
   searchProducts,
@@ -85,7 +88,12 @@ function Home() {
             alt={product.title}
             className="h-40 w-full object-cover rounded"
           />
-          <h2 className="text-lg font-semibold mt-2">{product.title}</h2>
+        <Link to={`/product/${product.id}`}>
+         <h2 className="text-lg font-semibold mt-2 hover:underline text-blue-600">
+          {product.title}
+         </h2>
+        </Link>
+
           <p className="text-gray-500">${product.price}</p>
           <button
             onClick={() => addToCart(product)}
