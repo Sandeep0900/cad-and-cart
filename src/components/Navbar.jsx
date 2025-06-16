@@ -15,14 +15,14 @@ function Navbar() {
         </Link>
 
         {/* Hide Home button when already on home */}
-        {location.pathname !== '/' && (
+        {/* {location.pathname !== '/' &&*/}
           <Link
             to="/"
             className="text-sm px-4 py-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-100 transition"
           >
             ⬅ Home
           </Link>
-        )}
+        
       </div>
 
       {/* Right: Cart */}
