@@ -18,7 +18,7 @@ function ProductDetail() {
   if (!product) return <p className="p-6">Loading...</p>;
 
   return (
-     <div className="max-w-6xl mx-auto p-6">
+     <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 p-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-start">
         {/* Image Section */}
         <div className="bg-white shadow rounded overflow-hidden">

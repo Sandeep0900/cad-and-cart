@@ -7,6 +7,7 @@ import ProductDetail from './pages/ProductDetail.jsx';
 
 function App() {
   return (
+   <div className="min-h-screen bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors">
     <Router>
       <Navbar />
       <Routes>
@@ -15,6 +16,7 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail />} />
       </Routes>
     </Router>
+   </div>
   );
 }
 

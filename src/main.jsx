@@ -10,7 +10,7 @@ import { CartProvider } from './context/CartContext.jsx';
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <CartProvider>
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder={false} />
       <App />
     </CartProvider>
   </React.StrictMode>
