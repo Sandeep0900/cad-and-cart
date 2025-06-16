@@ -10,3 +10,5 @@ export const getProductsByCategory = (category) =>
   axios.get(`${BASE_URL}/category/${category}`);
 export const getAllCategories = () =>
   axios.get(`${BASE_URL}/categories`);
+export const getPaginatedProducts = (limit = 10, skip = 0) =>
+  axios.get(`https://dummyjson.com/products?limit=${limit}&skip=${skip}`);
