@@ -186,6 +186,9 @@ function Home() {
               </h2>
             </Link>
             <p className="text-gray-500">${product.price}</p>
+            <p className={`text-sm font-medium mt-1 ${product.stock > 0 ? 'text-green-600' : 'text-red-500'}`}>
+              {product.stock > 0 ? `${product.stock} In Stock` : 'Out of Stock'}
+            </p>
             <button
               onClick={() => addToCart(product)}
               className="bg-blue-500 text-white px-3 py-1 mt-3 rounded hover:bg-blue-600"
