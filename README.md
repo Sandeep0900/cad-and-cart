@@ -57,28 +57,6 @@ A modern and feature-rich e-commerce product catalog built using **React (Vite)*
 - [DummyJSON API](https://dummyjson.com/)
 - [React Hot Toast](https://react-hot-toast.com/) – for toast notifications
 
----
-
-## 📁 Project Structure
-
-src/
-├── assets/                  # Images or static files
-├── components/              # Reusable UI components
-│   └── ThemeToggle.jsx
-├── context/                 # Global state (Cart Context)
-│   └── CartContext.jsx
-├── pages/                   # Page-level components
-│   ├── Home.jsx
-│   └── ProductDetail.jsx
-├── services/                # API calls and integrations
-│   └── api.js
-├── App.jsx                  # Main app component with routing
-├── main.jsx                 # Entry point (React + Vite)
-└── index.css                # TailwindCSS & base styles
-
-
----
-
 ## 🧪 Getting Started
 
 ### 1. Clone the Repository
