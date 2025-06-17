@@ -13,7 +13,7 @@ function Navbar() {
       {/* Left: Brand or Home */}
       <div className="flex gap-4 items-center">
         <Link to="/" className="text-xl font-bold text-white hover:text-blue-800">
-          🛍️ Cad-Cart
+          🛍️ ShopWise
         </Link>
 
         {location.pathname !== '/' && (
