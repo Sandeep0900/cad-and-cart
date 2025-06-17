@@ -62,19 +62,19 @@ A modern and feature-rich e-commerce product catalog built using **React (Vite)*
 ## 📁 Project Structure
 
 src/
-├── assets/
-├── components/
-│ └── ThemeToggle.jsx
-├── context/
-│ └── CartContext.jsx
-├── pages/
-│ ├── Home.jsx
-│ └── ProductDetail.jsx
-├── services/
-│ └── api.js
-├── App.jsx
-├── main.jsx
-└── index.css
+├── assets/                  # Images or static files
+├── components/              # Reusable UI components
+│   └── ThemeToggle.jsx
+├── context/                 # Global state (Cart Context)
+│   └── CartContext.jsx
+├── pages/                   # Page-level components
+│   ├── Home.jsx
+│   └── ProductDetail.jsx
+├── services/                # API calls and integrations
+│   └── api.js
+├── App.jsx                  # Main app component with routing
+├── main.jsx                 # Entry point (React + Vite)
+└── index.css                # TailwindCSS & base styles
 
 
 ---
