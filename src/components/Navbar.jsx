@@ -21,7 +21,7 @@ function Navbar() {
     to="/"
     className="text-sm px-4 py-2 rounded border border-blue-600 text-white-600 hover:bg-blue-100 hover:text-black transition"
   >
-    ⬅ Without Refresh Move to Home
+    ⬅ Home
   </Link>
 )}
 
@@ -31,7 +31,7 @@ function Navbar() {
             href="/"
             className="text-sm px-4 py-2 rounded border border-blue-600 text-white-600 hover:bg-blue-100 hover:text-black transition"
           >
-            ⬅Refresh and Move to Home
+            ⬅Refresh & Home
           </a>
         
       </div>
