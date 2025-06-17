@@ -12,18 +12,18 @@ function Navbar() {
     <nav className="bg-white dark:bg-gray-800 shadow-md px-6 py-4 flex justify-between items-center sticky top-0 z-50 text-gray-900 dark:text-white">
       {/* Left: Brand or Home */}
       <div className="flex gap-4 items-center">
-        <Link to="/" className="text-xl font-bold text-blue-600 hover:text-blue-800">
+        <Link to="/" className="text-xl font-bold text-white hover:text-blue-800">
           🛍️ Cad-Cart
         </Link>
 
         {/* Hide Home button when already on home */}
         {/* {location.pathname !== '/' &&*/}
-          <Link
-            to="/"
-            className="text-sm px-4 py-2 rounded border border-blue-600 text-blue-600 hover:bg-blue-100 transition"
+          <a
+            href="/"
+            className="text-sm px-4 py-2 rounded border border-blue-600 text-white-600 hover:bg-blue-100 hover:text-black transition"
           >
             ⬅ Home
-          </Link>
+          </a>
         
       </div>
 
