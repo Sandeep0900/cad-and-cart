@@ -293,9 +293,9 @@ const handleRatingFilter = (rating) => {
         </Link>
 
         <p className="text-yellow-500 text-sm">
-  {'★'.repeat(Math.floor(product.rating))}{' '}
-  <span className="text-gray-500 dark:text-gray-400 text-xs">({product.rating})</span>
-</p>
+         {'★'.repeat(Math.floor(product.rating))}{' '}
+        <span className="text-gray-500 dark:text-gray-400 text-xs">({product.rating})</span>
+        </p>
 
 
         <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">
