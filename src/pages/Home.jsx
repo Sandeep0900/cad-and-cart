@@ -106,13 +106,14 @@ function Home() {
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
         {products.map(product => (
           <div key={product.id} className=" bg-white shadow rounded p-4">
+            <Link to={`/product/${product.id}`}>
             <img
               src={product.thumbnail}
               alt={product.title}
               className="h-40 w-full object-cover rounded"
             />
-            <Link to={`/product/${product.id}`}>
-              <h2 className="text-lg font-semibold mt-2 hover:underline text-blue-600">
+            
+              <h2 className="text-lg font-semibold mt-2 hover:underline text-black">
                 {product.title}
               </h2>
             </Link>
