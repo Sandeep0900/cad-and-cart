@@ -185,6 +185,10 @@ function Home() {
                 {product.title}
               </h2>
             </Link>
+            {/* Description */}
+            <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">
+              {product.description}
+            </p>
             <p className="text-gray-500">${product.price}</p>
             <p className={`text-sm font-medium mt-1 ${product.stock > 0 ? 'text-green-600' : 'text-red-500'}`}>
               {product.stock > 0 ? `${product.stock} In Stock` : 'Out of Stock'}
