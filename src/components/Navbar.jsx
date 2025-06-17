@@ -16,13 +16,22 @@ function Navbar() {
           🛍️ Cad-Cart
         </Link>
 
-        {/* Hide Home button when already on home */}
+        {location.pathname !== '/' && (
+  <Link
+    to="/"
+    className="text-sm px-4 py-2 rounded border border-blue-600 text-white-600 hover:bg-blue-100 hover:text-black transition"
+  >
+    ⬅ Without Refresh Move to Home
+  </Link>
+)}
+
+
         {/* {location.pathname !== '/' &&*/}
           <a
             href="/"
             className="text-sm px-4 py-2 rounded border border-blue-600 text-white-600 hover:bg-blue-100 hover:text-black transition"
           >
-            ⬅ Home
+            ⬅Refresh and Move to Home
           </a>
         
       </div>
