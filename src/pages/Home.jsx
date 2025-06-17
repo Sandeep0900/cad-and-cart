@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   getAllProducts,
+  getProductById,
   searchProducts,
   getAllCategories,
   getProductsByCategory,
@@ -27,7 +28,11 @@ function Home() {
   const [minRating, setMinRating] = useState('');
 
 
+  const [loadingProductId, setLoadingProductId] = useState(null);
+  const [outOfStockMessage, setOutOfStockMessage] = useState(null);
 
+
+  const [refreshing, setRefreshing] = useState(false);
 
   // Pagination states
   const [page, setPage] = useState(1);
@@ -45,6 +50,47 @@ function Home() {
       setCategories(res.data);
     });
   }, [page]);
+
+//   useEffect(() => {
+//   const interval = setInterval(async () => {
+//     try {
+//       const updatedProducts = await Promise.all(
+//         products.map(async (p) => {
+//           const res = await getProductById(p.id);
+//           return res.data;
+//         })
+//       );
+//       setProducts(updatedProducts);
+//     } catch (err) {
+//       console.error('Polling error:', err);
+//     }
+//   }, 10000); // Every 10 seconds
+
+//   return () => clearInterval(interval);
+// }, [products]);
+
+
+useEffect(() => {
+  const interval = setInterval(async () => {
+    setRefreshing(true);
+    try {
+      const updatedProducts = await Promise.all(
+        products.map(async (p) => {
+          const res = await getProductById(p.id);
+          return res.data;
+        })
+      );
+      setProducts(updatedProducts);
+    } catch (err) {
+      console.error('Polling error:', err);
+    } finally {
+      setRefreshing(false);
+    }
+  }, 10000);
+
+  return () => clearInterval(interval);
+}, [products]);
+
 
   useEffect(() => {
   const handleClickOutside = (event) => {
@@ -132,6 +178,25 @@ const handleRatingFilter = (rating) => {
   const filtered = products.filter(product => product.rating >= r);
   setProducts(filtered);
 };
+
+const handleAddToCart = async (product) => {
+  // Show spinner
+  setLoadingProductId(product.id);
+  setOutOfStockMessage(null);
+
+  // Simulate availability check
+  await new Promise(resolve => setTimeout(resolve, 800)); // Simulate delay (e.g. API check)
+
+  if (product.stock > 0) {
+    addToCart(product);
+  } else {
+    setOutOfStockMessage(`❌ "${product.title}" is out of stock.`);
+  }
+
+  // Remove spinner
+  setLoadingProductId(null);
+};
+
 
 
 
@@ -309,19 +374,46 @@ const handleRatingFilter = (rating) => {
         </p>
 
         <button
-          onClick={() => addToCart(product)}
-          className={`px-3 py-1 mt-3 rounded cursor-pointer transition ${
-            product.stock === 0
-              ? 'bg-gray-400 text-white cursor-not-allowed'
-              : 'bg-blue-500 text-white hover:bg-blue-600'
-          }`}
-          disabled={product.stock === 0}
-        >
-          Add to Cart
-        </button>
+  onClick={() => handleAddToCart(product)}
+  disabled={loadingProductId === product.id}
+  className={`px-3 py-1 mt-3 rounded cursor-pointer transition ${
+    product.stock === 0
+      ? 'bg-gray-400 text-white cursor-not-allowed'
+      : 'bg-blue-500 text-white hover:bg-blue-600'
+  }`}
+>
+  {loadingProductId === product.id ? (
+    <span className="flex items-center gap-2">
+      <svg className="animate-spin h-4 w-4 text-white" viewBox="0 0 24 24">
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        />
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8v8H4z"
+        />
+      </svg>
+      Adding...
+    </span>
+  ) : (
+    'Add to Cart'
+  )}
+</button>
+
       </div>
     ))}
   </div>
+
+  {refreshing && (
+  <p className="text-center text-sm text-gray-500">🔄 Checking stock availability...</p>
+)}
+
 
   {/* Pagination */}
   {selectedCategory === '' && searchQuery === '' && (
