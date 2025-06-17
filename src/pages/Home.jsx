@@ -21,6 +21,10 @@ function Home() {
 
   const searchRef = useRef(null);
 
+  const [minPrice, setMinPrice] = useState('');
+  const [maxPrice, setMaxPrice] = useState('');
+
+
 
   // Pagination states
   const [page, setPage] = useState(1);
@@ -89,6 +93,33 @@ function Home() {
     }
   };
 
+  const handlePriceFilter = () => {
+  const min = Number(minPrice) || 0;
+  const max = Number(maxPrice) || Infinity;
+
+  const filtered = products.filter(product => {
+    return product.price >= min && product.price <= max;
+  });
+
+  setProducts(filtered);
+};
+
+
+const handleResetFilters = () => {
+  setSearchQuery('');
+  setSelectedCategory('');
+  setMinPrice('');
+  setMaxPrice('');
+  setPage(1);
+
+  getPaginatedProducts(limit, 0).then(res => {
+    setProducts(res.data.products);
+    setTotalProducts(res.data.total);
+  });
+};
+
+
+
 
   const handleInputChange = async (e) => {
   const value = e.target.value;
@@ -119,33 +150,33 @@ function Home() {
       {/* Filter Controls */}
       <div className=" flex flex-col md:flex-row gap-4 mb-6 items-center ">
         <div ref={searchRef} className="relative w-full md:w-1/3">
-  <input
-    type="text"
-    placeholder="Search products..."
-    value={searchQuery}
-    onChange={handleInputChange}
-    onKeyDown={e => e.key === 'Enter' && handleSearch()}
-    className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 border px-3 py-2 rounded w-full"
-  />
+          <input
+            type="text"
+            placeholder="Search products..."
+            value={searchQuery}
+            onChange={handleInputChange}
+            onKeyDown={e => e.key === 'Enter' && handleSearch()}
+            className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 border px-3 py-2 rounded w-full"
+          />
 
-  {showSuggestions && suggestions.length > 0 && (
-    <ul className="absolute z-10 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded mt-1 w-full max-h-48 overflow-auto">
-      {suggestions.map((suggestion, index) => (
-        <li
-          key={index}
-          onClick={() => {
-            setSearchQuery(suggestion);
-            handleSearch();
-            setShowSuggestions(false);
-          }}
-          className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition"
-        >
-          {suggestion}
-        </li>
-      ))}
-    </ul>
-  )}
-</div>
+          {showSuggestions && suggestions.length > 0 && (
+            <ul className="absolute z-10 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded mt-1 w-full max-h-48 overflow-auto">
+            {suggestions.map((suggestion, index) => (
+                <li
+                  key={index}
+                  onClick={() => {
+                  setSearchQuery(suggestion);
+                  handleSearch();
+                  setShowSuggestions(false);
+                  }}
+                  className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition"
+                >
+                  {suggestion}
+                </li>
+              ))}
+            </ul>
+         )}
+        </div>
 
 
     <button
@@ -169,6 +200,45 @@ function Home() {
             ))}
         </select>
       </div>
+
+<div className="flex flex-col md:flex-row md:items-end gap-4 w-full md:w-auto">
+  {/* Price Range Inputs */}
+  <div className="flex flex-col sm:flex-row gap-2 w-full">
+    <input
+      type="number"
+      placeholder="Min Price"
+      value={minPrice}
+      onChange={(e) => setMinPrice(e.target.value)}
+      className="w-full sm:w-36 px-3 py-2 border rounded dark:bg-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <input
+      type="number"
+      placeholder="Max Price"
+      value={maxPrice}
+      onChange={(e) => setMaxPrice(e.target.value)}
+      className="w-full sm:w-36 px-3 py-2 border rounded dark:bg-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+  </div>
+
+  {/* Apply Button */}
+  <button
+    onClick={handlePriceFilter}
+    className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full md:w-auto transition"
+  >
+    ✅ Apply
+  </button>
+
+  {/* Reset Button */}
+  <button
+    onClick={handleResetFilters}
+    className="text-red-600 border border-red-600 px-4 py-2 rounded hover:bg-red-100 dark:hover:bg-gray-800 w-full md:w-auto transition"
+  >
+    🔄 Reset
+  </button>
+</div>
+
+  
+
 
       {/* Product Grid */}
       <div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
