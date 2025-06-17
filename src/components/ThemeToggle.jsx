@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 function ThemeToggle() {
   const [isDark, setIsDark] = useState(false);
@@ -29,6 +30,8 @@ function ThemeToggle() {
       localStorage.setItem('theme', 'dark');
       setIsDark(true);
     }
+     // ✅ Show toast
+    toast('🌙 Theme toggle in progress...');
   };
 
   return (
