@@ -31,6 +31,7 @@ function Home() {
   const [loadingProductId, setLoadingProductId] = useState(null);
   const [outOfStockMessage, setOutOfStockMessage] = useState(null);
 
+  const [userRatings, setUserRatings] = useState({});
 
   const [refreshing, setRefreshing] = useState(false);
 
@@ -68,6 +69,19 @@ function Home() {
 
 //   return () => clearInterval(interval);
 // }, [products]);
+
+useEffect(() => {
+  const savedRatings = JSON.parse(localStorage.getItem('userRatings'));
+  if (savedRatings) {
+    setUserRatings(savedRatings);
+  }
+}, []);
+
+useEffect(() => {
+  localStorage.setItem('userRatings', JSON.stringify(userRatings));
+}, [userRatings]);
+
+
 
 
 useEffect(() => {
@@ -178,6 +192,19 @@ const handleRatingFilter = (rating) => {
   const filtered = products.filter(product => product.rating >= r);
   setProducts(filtered);
 };
+
+const handleUserRating = (productId, rating) => {
+  setUserRatings(prev => {
+    const updated = { ...prev };
+    if (!updated[productId]) {
+      updated[productId] = [];
+    }
+    updated[productId].push(rating);
+    return updated;
+  });
+};
+
+
 
 const handleAddToCart = async (product) => {
   // Show spinner
@@ -363,15 +390,49 @@ const handleAddToCart = async (product) => {
         </p>
 
 
+
+
         <p className="text-sm text-gray-600 dark:text-gray-300 mt-1 line-clamp-2">
           {product.description}
         </p>
 
         <p className="text-gray-700 dark:text-gray-200 font-semibold mt-1">${product.price}</p>
 
+        {/* Updated Average Rating */}
+{userRatings[product.id] && userRatings[product.id].length > 0 && (
+  <p className="text-sm text-yellow-600 dark:text-yellow-400 mt-1">
+    User Avg: {(
+      userRatings[product.id].reduce((a, b) => a + b, 0) /
+      userRatings[product.id].length
+    ).toFixed(1)}{' '}
+    ({userRatings[product.id].length} review{userRatings[product.id].length > 1 ? 's' : ''})
+  </p>
+)}
+
+
         <p className={`text-sm font-medium mt-1 ${product.stock > 0 ? 'text-green-600' : 'text-red-500'}`}>
           {product.stock > 0 ? `${product.stock} In Stock` : 'Out of Stock'}
         </p>
+
+        <div className="mt-3">
+  <p className="text-sm mb-1 text-gray-600 dark:text-gray-300">Rate this product:</p>
+  <div className="flex gap-1">
+    {[1, 2, 3, 4, 5].map((star) => (
+      <button
+        key={star}
+        onClick={() => handleUserRating(product.id, star)}
+        className={`text-xl ${
+          userRatings[product.id]?.includes(star)
+            ? 'text-yellow-400'
+            : 'text-gray-400'
+        } hover:text-yellow-500`}
+      >
+        ★
+      </button>
+    ))}
+  </div>
+</div>
+
 
         <button
   onClick={() => handleAddToCart(product)}
