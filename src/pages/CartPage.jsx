@@ -20,7 +20,7 @@ function CartPage() {
               </div>
               <button
                 onClick={() => removeFromCart(item.id, item)}
-                className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 transition cursor-pointer"
               >
                 Remove
               </button>
