@@ -103,12 +103,10 @@ npm run build
 Deployed at: https://cad-and-cart-blush.vercel.app/
 
 📷 Screenshots
-| Home Page                   | Product Detail                | Cart Page                   |
-| --------------------------- | ----------------------------- | --------------------------- |
-| ![](![Screenshot 2025-06-17 154453](https://github.com/user-attachments/assets/a719a4f8-cbc8-410a-8658-60ffb873e222)
-) | ![](![Screenshot 2025-06-17 154519](https://github.com/user-attachments/assets/0b088b54-ae35-4653-86ab-b45515fcb57f)
-) | ![](![image](https://github.com/user-attachments/assets/f80a17fe-86a0-46e5-9602-18daecd09258)
-) |
+| Home Page                                                                                | Product Detail                                                                                     | Cart Page                                                                                |
+| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| ![Home](https://github.com/user-attachments/assets/a719a4f8-cbc8-410a-8658-60ffb873e222) | ![Product Detail](https://github.com/user-attachments/assets/0b088b54-ae35-4653-86ab-b45515fcb57f) | ![Cart](https://github.com/user-attachments/assets/f80a17fe-86a0-46e5-9602-18daecd09258) |
+
 
 
 ✨ Future Enhancements
