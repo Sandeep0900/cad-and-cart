@@ -3,6 +3,16 @@
 A modern and feature-rich e-commerce product catalog built using **React (Vite)** and **TailwindCSS**, designed to provide a seamless shopping experience with real-time interactivity and responsive design. This project simulates an online storefront using data from the DummyJSON API.
 
 ---
+📷 Screenshots
+| Home Page                                                                                | Product Detail                                                                                     | Cart Page                                                                                |
+| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| ![Home](https://github.com/user-attachments/assets/a719a4f8-cbc8-410a-8658-60ffb873e222) | ![Product Detail](https://github.com/user-attachments/assets/0b088b54-ae35-4653-86ab-b45515fcb57f) | ![Cart](https://github.com/user-attachments/assets/f80a17fe-86a0-46e5-9602-18daecd09258) |
+
+
+---
+🌐 Live Demo
+Deployed at: https://cad-and-cart-blush.vercel.app/
+---
 
 ## 🚀 Features
 
@@ -77,13 +87,7 @@ npm install
 ```bash
 npm run build
 ```
-🌐 Live Demo
-Deployed at: https://cad-and-cart-blush.vercel.app/
 
-📷 Screenshots
-| Home Page                                                                                | Product Detail                                                                                     | Cart Page                                                                                |
-| ---------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| ![Home](https://github.com/user-attachments/assets/a719a4f8-cbc8-410a-8658-60ffb873e222) | ![Product Detail](https://github.com/user-attachments/assets/0b088b54-ae35-4653-86ab-b45515fcb57f) | ![Cart](https://github.com/user-attachments/assets/f80a17fe-86a0-46e5-9602-18daecd09258) |
 
 
 
