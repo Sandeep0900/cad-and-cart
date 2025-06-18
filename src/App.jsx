@@ -20,10 +20,10 @@ function App() {
   );
 }
 
-<Routes>
-  <Route path="/" element={<Home />} />
-  <Route path="/cart" element={<CartPage />} />
-  <Route path="/product/:id" element={<ProductDetail />} />  {/* ✅ NEW */}
-</Routes>
+// {/* <Routes>
+//   <Route path="/" element={<Home />} />
+//   <Route path="/cart" element={<CartPage />} />
+//   <Route path="/product/:id" element={<ProductDetail />} />  {/* ✅ NEW */}
+// </Routes> */}
 
 export default App;

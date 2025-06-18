@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useCart } from '../context/CartContext.jsx';
 import ThemeToggle from './ThemeToggle.jsx';
+import { ShoppingBag, ShoppingCart } from 'lucide-react';
 
 
 function Navbar() {
@@ -41,7 +42,7 @@ function Navbar() {
             to="/cart"
             className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition"
         >
-            🛒 Cart
+            <ShoppingCart size={20}/>  Cart
             <span className="bg-white text-blue-600 text-sm px-2 py-0.5 rounded-full font-bold">
                 {cartItems.length}
             </span>

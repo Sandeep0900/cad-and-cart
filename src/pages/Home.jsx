@@ -9,6 +9,7 @@ import {
   getPaginatedProducts,
 } from '../services/api';
 import { useCart } from '../context/CartContext.jsx';
+import { CheckCircle2, RefreshCcw, Search } from 'lucide-react';
 
 function Home() {
   const [products, setProducts] = useState([]);
@@ -294,7 +295,10 @@ const handleAddToCart = async (product) => {
         onClick={handleSearch}
         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 w-full md:w-auto"
       >
-        🔍 Search
+        <div className="flex items-center justify-center gap-2">
+          <Search size={16} /> Search
+        </div>
+        
       </button>
 
       {/* Category Dropdown */}
@@ -336,9 +340,11 @@ const handleAddToCart = async (product) => {
       {/* Apply Button */}
       <button
         onClick={handlePriceFilter}
-        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full sm:w-auto"
+        className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 w-full sm:w-auto cursor-pointer"
       >
-        ✅ Apply
+        <div className='flex items-center justify-center gap-2'>
+          <CheckCircle2  size={16}/>Apply
+        </div>
       </button>
 
       {/* Reset Button */}
@@ -346,7 +352,9 @@ const handleAddToCart = async (product) => {
         onClick={handleResetFilters}
         className="text-red-600 border border-red-600 px-4 py-2 rounded hover:bg-red-100 dark:hover:bg-gray-800 w-full sm:w-auto"
       >
-        🔄 Reset
+        <div className='flex items-center justify-center gap-2 cursor-pointer'>
+          <RefreshCcw size={16}/> Reset
+        </div>
       </button>
 
       <select
